@@ -1,0 +1,63 @@
+service: rest-api
+
+provider:
+  name: aws
+  runtime: nodejs6.10 # set node.js runtime
+  memorySize: 128 # set the maximum memory of the Lambdas in Megabytes
+  timeout: 10 # the timeout is 10 seconds (default is 6 seconds)
+  stage: dev # setting the env stage to dev, this will be visible in the routes
+  region: us-east-1
+
+functions:
+  signUpUser:
+    handler: handler.signUp
+    events:
+      - http:
+          path: /signup
+          method: post
+          cors: true
+  getPost:
+    handler: handler.getPost
+    events:
+      - http:
+          path: /signup/post/{id}
+          method: get
+          cors: true
+  getAllPost:
+    handler: handler.getAllPost
+    events:
+      - http:
+          path: /signup/post
+          method: get
+          cors: true
+  postPost:
+    handler: handler.postPost
+    events:
+     - http:
+         path: /signup/post
+         method: post
+         cors: true
+  getComment:
+    handler: handler.getComment
+    events:
+     - http:
+         path: /signup/post/comments/{id}
+         method: get
+         cors: true
+  getAllComment:
+    handler: handler.getAllComment
+    events:
+     - http:
+         path: /signup/post/comments
+         method: get
+         cors: true
+  postComment:
+    handler: handler.postComment
+    events:
+     - http:
+         path: /signup/post/comments
+         method: post
+         cors: true
+
+plugins:
+- serverless-offline
