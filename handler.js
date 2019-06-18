@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config({ path: './variables.env' });
+require('dotenv').config({ path: './sample.variables' });
 const connectToDatabase = require('./db');
 const user = require('./models/user.models');
 const posts = require('./models/posts.model');
@@ -8,7 +8,7 @@ const comments = require('./models/comments.model');
 
 
 
-module.exports.signUpUser = (event, context, callback) => {
+module.exports.signUp = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
 
   connectToDatabase().then(() => {
