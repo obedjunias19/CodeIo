@@ -20,6 +20,7 @@ submitHandler = e => {
 
   Axios.post('https://jsonplaceholder.typicode.com/comments', this.state).then(response => {
       console.log(response);
+      alert('Your Comment Was Posted...')
     }).catch(error => {
       console.log(error)
     })
@@ -27,7 +28,7 @@ submitHandler = e => {
 render(){
   const { id, name,email, body } = this.state
   return(
-    
+        <body>
         <form  onSubmit={this.submitHandler}>  
         <h1>Comment Time...!!</h1>
               <fieldset>
@@ -41,7 +42,7 @@ render(){
                 <textarea rows="4" cols="50" name= "body" value={body} onChange={this.changeHandler.bind(this)}></textarea>
               </fieldset>
               <button type="submit" >Comment</button>
-        </form>
+        </form></body>
     )
 }
 }

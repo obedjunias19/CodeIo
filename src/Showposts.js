@@ -16,13 +16,14 @@ Axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {this.s
 render() {
     const { posts, errorMsg } = this.state
     return (
+        <body>
         <div>
-            List of posts
+           <h1> List of posts </h1>
             {posts.length
-                ? posts.map(post => <div key={post.id} id="list"><ul><p>This is the Post with Id number: {post.id}</p><li>{post.body}</li></ul></div>)
+                ? posts.map(post =><div> <div key={post.id} id="list"><ul><div className='Para'><p>This is the Post with Id number: {post.id}</p></div><li>{post.body}</li></ul><br /></div><br /></div>)
       : null}
     {errorMsg ? <div>{errorMsg}</div> : null}
-        </div>
+        </div></body>
     )
 }
 }

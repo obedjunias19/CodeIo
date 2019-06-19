@@ -19,6 +19,7 @@ submitHandler = e => {
 
   Axios.post('https://jsonplaceholder.typicode.com/posts', this.state).then(response => {
       console.log(response);
+      alert('Your Post Was Posted...')
     }).catch(error => {
       console.log(error)
     })
@@ -26,7 +27,7 @@ submitHandler = e => {
 render(){
   const { userId, title, body } = this.state
   return(
-    
+      <body>
         <form  onSubmit={this.submitHandler}>  
         <h1>Post It Here...!!</h1>
               <fieldset>
@@ -39,6 +40,7 @@ render(){
               </fieldset>
               <button type="submit" >Post</button>
         </form>
+        </body>
     )
 }
 }

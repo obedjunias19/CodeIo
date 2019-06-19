@@ -17,7 +17,7 @@ constructor(props){
 }
   loginHandle = (e) => {
     e.preventDefault()
-    Axios.post('localhost:3000/post',this.state).then(response=>{console.log(response)}).catch(err=>{console.log(err)})
+    Axios.post('/posts.js',this.state).then(response=>{console.log(response);} ).catch(err=>{console.log(err)})
     return ( this.state.user_name
     );
 }
@@ -30,9 +30,8 @@ changeHandle = e =>{
 }
     render(){
         return(
-            
-
-            <form  onSubmit={this.loginHandle.bind(this)}>
+          <body>  
+            <form action="/posts.js" onSubmit={this.loginHandle.bind(this)}>
             
               <h1>Sign Up</h1>
               
@@ -51,9 +50,7 @@ changeHandle = e =>{
               </fieldset>
               <button type="submit" onSubmit={this.loginHandle.bind(this)}>Sign Up</button>
             </form>
-            
-          
-
+            </body>
         )
     }
 }

@@ -16,13 +16,15 @@ Axios.get('https://jsonplaceholder.typicode.com/comments').then(response => {thi
 render() {
     const { comments, errorMsg } = this.state
     return (
+        <body>
         <div>
-            List of Comments
+            <h1>List of Comments</h1>
             {comments.length
-                ? comments.map(comment => <div key={comment.id} id="list"><ul><p>Comment Title:  {comment.name}</p><p> Id number is {comment.id}</p><p>User's email is {comment.email}</p><li>Comment: <br />{comment.body}</li></ul></div>)
+                ? comments.map(comment =><div> <div key={comment.id} id="list"><ul><div className='Para'><p>Comment Title:  {comment.name}</p><p> Id number is {comment.id}</p><p>User's email is {comment.email}</p></div><li>Comment: <br />{comment.body}</li></ul><br /></div><br /></div>)
       : null}
     {errorMsg ? <div>{errorMsg}</div> : null}
         </div>
+        </body>
     )
 }
 }
