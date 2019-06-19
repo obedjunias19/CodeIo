@@ -1,0 +1,9 @@
+/* LIST #2 */
+#list { width:320px; }
+#list ul li {
+     font-style:italic; font-family:Georgia, Times, serif; font-size:24px; color: slateblue  }
+
+#list ul li  { padding:8px;width:100%; font-style:normal; font-family:Arial; font-size:23px; color:slateblue; border-left: 1px solid #999;border-bottom: 1px solid #999; }
+#list ul li  em {  width:100%; }
+#list p {color: seagreen;}
+
