@@ -19,7 +19,8 @@ submitHandler = e => {
 
   Axios.post('https://jsonplaceholder.typicode.com/posts', this.state).then(response => {
       console.log(response);
-      alert('Your Post Was Posted...')
+      alert('Your Post Was Posted...');
+      window.location = "comment";
     }).catch(error => {
       console.log(error)
     })

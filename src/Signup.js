@@ -1,8 +1,5 @@
 import React from 'react';
 import './Signup.css';
-import Posts from './posts';
-import { BrowserRouter as Router} from 'react-router-dom';
-import Route from 'react-router-dom/Route';
 import Axios from 'axios';
 export default class Signup extends React.Component{
 constructor(props){
@@ -17,14 +14,9 @@ constructor(props){
 }
   loginHandle = (e) => {
     e.preventDefault()
-    Axios.post('/posts.js',this.state).then(response=>{console.log(response);} ).catch(err=>{console.log(err)})
-    return ( this.state.user_name
-    );
+    Axios.post('/posts.js',this.state).then(response=>{console.log(response);window.location = "posts.js"} ).catch(err=>{console.log(err)})
 }
-render(){
-  const newpage = this.loginHandle()
-  return(<Router><Route path="/post" exact render={() =>{return(<Posts {...newpage} />)}}/></Router>)
-}
+
 changeHandle = e =>{
   this.setState({[e.target.name]: e.target.value})
 }
