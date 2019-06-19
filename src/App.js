@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import Signup from './Signup';
 import Posts from './posts';
+import Comments from './Comment';
 import Showposts from './Showposts';
 import Showcomments from './Showcomments';
 import { BrowserRouter as Router} from 'react-router-dom';
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" exact render={() =>{return(<Signup />)}} />
       <Route path="/post" exact render={() =>{return(<Posts />)}} />
       <Route path="/showposts" exact render={() =>{return(<Showposts />)}} />
+      <Route path="/comment" exact render={() =>{return(<Comments />)}} />
       <Route path="/showcomments" exact render={() =>{return(<Showcomments />)}} />
     </Router>
   );
