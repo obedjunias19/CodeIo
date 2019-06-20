@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const mongoClient = require('mongodb').MongoClient
+const mongoURI = 'mongodb://Obed:Test@mongodb.net:27017/testDb'
 mongoose.Promise = global.Promise;
-let isConnected;
+let isConnected
 
 module.exports = connectToDatabase = () => {
   if (isConnected) {
@@ -8,9 +10,14 @@ module.exports = connectToDatabase = () => {
     return Promise.resolve();
   }
 
-  console.log('=> using new database connection');
-  return mongoose.connect(process.env.DB)
-    .then(db => { 
-      isConnected = db.connections[0].readyState;
-    });
+  return mongoClient.connect(mongoURI, { 
+    useNewUrlParser: true , 
+    useMongoClient: true
+  }).then(db => { 
+      isConnected = db
+      console.log('=> using new database connection');
+      return db
+    }).catch(err => {
+      console.log(err)
+    })
 };

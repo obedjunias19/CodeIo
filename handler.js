@@ -2,26 +2,29 @@
 
 require('dotenv').config({ path: './sample.variables' });
 const connectToDatabase = require('./db');
-const user = require('./models/user.models');
-const posts = require('./models/posts.model');
-const comments = require('./models/comments.model');
-
+const Users = require('./models/user.models.js');
+const posts = require('./models/posts.model.js');
+const comments = require('./models/comments.model.js');
 
 
 module.exports.signUp = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
-
-  connectToDatabase().then(() => {
-    user.create(JSON.parse(event.body))
-  }).then(user => callback(null, {
-    statuscode: 200,
-    body: JSON.stringify(user)
-  })).catch(err => callback(null, {
-    statuscode: err.statuscode || 500,
-    headers: { 'Content-Type': 'text/plain' },
-    body: 'Could not sign up up.'
-  }))
+  connectToDatabase().then((client) => {
+    var db = client.db('testDb')
+    return db.collection('users').insert(event.body, () => {
+      console.log('user created')
+    }).catch((err) => {
+      return {
+        body: JSON.stringify(err),
+        statuscode: 500
+      }
+    })
+  }).catch(err => {
+    console.log(err)
+    return { body: JSON.stringify(err), statuscode: 500 }
+  })
 }
+
 
 module.exports.getPosts = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -58,7 +61,7 @@ module.exports.postPost = (event, context, callback) => {
 
   return connectToDatabase().then(() => {
     posts.create(JSON.parse(event.body))
-  }).then(posts => callback(nill, {
+  }).then(posts => callback(null, {
     statuscode: 200,
     body: JSON.stringify(posts)
   })).catch(err => callback(null, {
@@ -73,10 +76,10 @@ module.exports.getComment = (event, context, callback) => {
 
   return connectToDatabase().then(() => {
     comments.findById(event.pathParameter.id)
-  }).then(comments => callback(nill, {
+  }).then(comments => callback(null, {
     statuscode: 200,
     body: JSON.stringify(comments)
-  })).catch(err => callback(nill, {
+  })).catch(err => callback(null, {
     statuscode: err.statuscode || 500,
     headers: {'Content-Type': 'text/plain'},
     body: 'Could not get comment'
@@ -88,13 +91,13 @@ module.exports.getAllComment = (event, context, callback) => {
 
   return connectToDatabase().then(() => {
     comments.find()
-  }).then(comments => callback(nill, {
+  }).then(comments => callback(null, {
     statuscode: 200,
     body: JSON.stringify(comments)
-  })).catch(err => callback(nill, {
+  })).catch(err => callback(null, {
     statuscode: err.statuscode || 500,
     headers: {'Content-Type': 'text/plain'},
-    body: 'Could not get comment'
+    body: 'Error getting all comments'
   }))
 }
 
@@ -103,10 +106,10 @@ module.exports.postComment = (event, context, callback) => {
 
   return connectToDatabase().then(() => {
     comments.create(JSON.parse(event.body))
-  }).then(comments => callback(nill, {
+  }).then(comments => callback(null, {
     statuscode: 200,
     body: JSON.stringify(comments)
-  })).catch(err => callback(nill, {
+  })).catch(err => callback(null, {
     statuscode: err.statuscode || 500,
     headers: {'Content-Type': 'text/plain'},
     body: 'Could not post comment'
