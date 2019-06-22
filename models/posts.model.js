@@ -8,4 +8,4 @@ const postsSchema = new Schema({
     userId: Number
 })
 
-module.export = mongoose.model('posts', postsSchema, 'posts')
+module.export = mongoose.model('posts', postsSchema)

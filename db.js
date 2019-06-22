@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const mongoClient = require('mongodb').MongoClient
-const mongoURI = 'mongodb://Obed:Test@mongodb.net:27017/testDb'
+const mongoURI = 'mongodb+srv://Obed:Test@firstcluster-s2qwf.mongodb.net/test?retryWrites=true&w=majority'
 mongoose.Promise = global.Promise;
 let isConnected
 

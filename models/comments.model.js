@@ -9,4 +9,4 @@ const commentsSchema = new Schema({
     postId: Number
 })
 
-module.export = mongoose.model('comments', commentsSchema, 'comments')
+module.export = mongoose.model('comments', commentsSchema)
