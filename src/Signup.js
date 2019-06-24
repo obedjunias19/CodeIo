@@ -9,8 +9,6 @@ constructor(props){
     username: '',
     email: '',
     phone:''
-    
-
   }
 }
 
@@ -20,9 +18,16 @@ changeHandle = e =>{
 }
 submitHandler = e => {
   e.preventDefault()
-
-  Axios.post('https://i9ytwm3hb7.execute-api.ap-south-1.amazonaws.com/test/signup', this.state).then(response => {
+  var d = {
+    _id:this.state._id,
+    username: this.state.username,
+    email: this.state.email,
+    phone:this.state.phone
+  }
+  
+  Axios.post('https://i9ytwm3hb7.execute-api.ap-south-1.amazonaws.com/test/signup', JSON.stringify(d)).then(response => {
       console.log(response);
+      console.log(response.data);
       alert('Succesfully Signed Up');
       window.location = "post";
     }).catch(error => {
