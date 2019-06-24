@@ -17,7 +17,7 @@ changeHandler  = e =>{
 submitHandler = e => {
   e.preventDefault()
 
-  Axios.post('https://jsonplaceholder.typicode.com/posts', this.state).then(response => {
+  Axios.post('https://i9ytwm3hb7.execute-api.ap-south-1.amazonaws.com/test/signup/posts', this.state).then(response => {
       console.log(response);
       alert('Your Post Was Posted...');
       window.location = "comment";

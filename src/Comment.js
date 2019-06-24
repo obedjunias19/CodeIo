@@ -6,19 +6,19 @@ export default class Comments extends React.Component{
 		super(props)
 
 		this.state = {
-			id: '',
-            name: '',
-            email: '',
-			body: ''
+			id: '5',
+      name: 'Obed',
+      email: 'obed@gmail.com',
+			body: 'Test'
 		}
 }
 changeHandler  = e =>{
-  this.setState({ [e.target.name]: e.target.value })
+  this.setState({ [e.target.name]: e.target.value },console.log(this.state))
 }
 submitHandler = e => {
   e.preventDefault()
 
-  Axios.post('https://jsonplaceholder.typicode.com/comments', this.state).then(response => {
+  Axios.post('https://i9ytwm3hb7.execute-api.ap-south-1.amazonaws.com/test/signup/posts/comments', this.state).then(response => {
       console.log(response);
       alert('Your Comment Was Posted...')
     }).catch(error => {

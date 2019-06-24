@@ -11,7 +11,7 @@ export default class Showcomments extends React.Component{
 }
 
 componentDidMount(){
-Axios.get('https://jsonplaceholder.typicode.com/comments').then(response => {this.setState({comments:response.data})}).catch(err => {this.setState({errorMsg:err})})
+Axios.get('https://i9ytwm3hb7.execute-api.ap-south-1.amazonaws.com/test/signup/posts/comments').then(response => {this.setState({comments:response.data})}).catch(err => {this.setState({errorMsg:err})})
 }
 render() {
     const { comments, errorMsg } = this.state
