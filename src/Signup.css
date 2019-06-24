@@ -39,7 +39,7 @@ body {
     margin-bottom: 30px;
   }
   
-  button {
+  .submitbutton {
     padding: 19px 39px 18px 39px;
     color: #FFF;
     background-color: #4bc970;
@@ -70,5 +70,14 @@ body {
     font-weight: 300;
     display: inline;
   }
+  .linkbutton{
+    background-color: teal;
+    color:white;
+    border-radius: 2px;
+    height: 25px;
+    width: 12%;
+    cursor: pointer;
+  }
+
   
   

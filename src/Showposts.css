@@ -6,7 +6,7 @@ body {
 #list { width:100%; 
      border:1.5px solid #999;
      border-radius: 20px;
-     background-color: #eee5a0;}
+     background-color: #f3f3e8;}
 #list ul li {
      font-style:italic; 
      font-family:Georgia, Times, serif; 
@@ -27,9 +27,7 @@ body {
 #list p {
      color: seagreen
      }
-.Para{
 
-     }
 h1 {
      margin: 0 0 30px 0;
      text-align: center;

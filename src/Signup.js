@@ -5,10 +5,11 @@ export default class Signup extends React.Component{
 constructor(props){
   super(props);
   this.state = {
-    user_name: '',
-    user_email: '',
-    phone:'',
-    user_password:''
+    _id:'',
+    username: '',
+    email: '',
+    phone:''
+    
 
   }
 }
@@ -36,19 +37,19 @@ submitHandler = e => {
               <h1>Sign Up</h1>
               
               <fieldset>
-      
+              <label for="uid">User Id:</label>
+                <input type="text" id="password" name="_id" value={this.state._id} onChange={this.changeHandle} />
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="user_name" value={this.state.user_name} onChange={this.changeHandle} />
+                <input type="text" id="name" name="username" value={this.state.username} onChange={this.changeHandle} />
                 
                 <label for="mail">Email:</label>
-                <input type="email" id="mail" name="user_email" value={this.state.user_email} onChange={this.changeHandle} />
+                <input type="email" id="mail" name="email" value={this.state.email} onChange={this.changeHandle} />
                 <label for="phone">Phone:</label>
-                <input type="text" id="phone" value="+91" name="phone" value={this.state.phone} onChange={this.changeHandle} />
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="user_password" value={this.state.user_password} onChange={this.changeHandle} />
+                <input type="text" id="phone"  name="phone" value={this.state.phone} onChange={this.changeHandle} />
+                
       
               </fieldset>
-              <button type="submit" >Sign Up</button>
+              <button type="submit" className="submitbutton" >Sign Up</button>
             </form>
             </body>
         )

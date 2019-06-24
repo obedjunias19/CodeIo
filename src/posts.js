@@ -1,13 +1,15 @@
 import React from 'react';
 import './Signup.css';
+import './Home.css';
 import Axios from 'axios';
+import {NavLink} from 'react-router-dom';
 export default class Posts extends React.Component{
   constructor(props) {
 		super(props)
 
 		this.state = {
-			user_id: '',
-			post_title: '',
+			id: '',
+			title: '',
 			body: ''
 		}
 }
@@ -28,20 +30,23 @@ submitHandler = e => {
 render(){
   const { userId, title, body } = this.state
   return(
-      <body>
+      <div className ="container-nav">
+          
+         <button type="button" className="linkbutton"><NavLink  to="/" exact activeStyle={{ color:'green' }}>Home</NavLink></button>&nbsp;
+         <button type="button" className="linkbutton"><NavLink to="/showposts" exact activeStyle={{ color:'green' }}>See All Posts</NavLink></button> 
         <form  onSubmit={this.submitHandler}>  
         <h1>Post It Here...!!</h1>
               <fieldset>
                 <label htmlFor="id">UserId:</label>
-                <input type="text" id="uid" name="user_id" value={userId} onChange={this.changeHandler.bind(this)} />
+                <input type="text" id="uid" name="id" value={userId} onChange={this.changeHandler.bind(this)} />
                 <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="post_title" value={title} onChange={this.changeHandler.bind(this)} />
+                <input type="text" id="title" name="title" value={title} onChange={this.changeHandler.bind(this)} />
                 <label htmlFor="body">Post:</label>
                 <textarea rows="4" cols="50" name= "body" value={body} onChange={this.changeHandler.bind(this)}></textarea>
               </fieldset>
-              <button type="submit" >Post</button>
+              <button type="submit" className="submitbutton" >Post</button>
         </form>
-        </body>
+        </div>
     )
 }
 }
