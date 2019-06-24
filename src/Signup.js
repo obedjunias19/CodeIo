@@ -12,18 +12,26 @@ constructor(props){
 
   }
 }
-  loginHandle = (e) => {
-    e.preventDefault()
-    Axios.post('/posts.js',this.state).then(response=>{console.log(response);window.location = "posts.js"} ).catch(err=>{console.log(err)})
-}
+
 
 changeHandle = e =>{
   this.setState({[e.target.name]: e.target.value})
 }
+submitHandler = e => {
+  e.preventDefault()
+
+  Axios.post('https://i9ytwm3hb7.execute-api.ap-south-1.amazonaws.com/test/signup', this.state).then(response => {
+      console.log(response);
+      alert('Succesfully Signed Up');
+      window.location = "post";
+    }).catch(error => {
+      console.log(error)
+    })
+}
     render(){
         return(
           <body>  
-            <form action="/posts.js" onSubmit={this.loginHandle.bind(this)}>
+            <form  onSubmit={this.submitHandler.bind(this)}>
             
               <h1>Sign Up</h1>
               
@@ -40,7 +48,7 @@ changeHandle = e =>{
                 <input type="password" id="password" name="user_password" value={this.state.user_password} onChange={this.changeHandle} />
       
               </fieldset>
-              <button type="submit" onSubmit={this.loginHandle.bind(this)}>Sign Up</button>
+              <button type="submit" >Sign Up</button>
             </form>
             </body>
         )
