@@ -1,0 +1,35 @@
+body {
+     font-family: 'Nunito', sans-serif;
+     color: #384047;
+     background-color: #ffffff;
+   }
+#list { width:100%; 
+     border:1.5px solid #999;
+     border-radius: 20px;
+     background-color: #f3f3e8;}
+#list ul li {
+     font-style:italic; 
+     font-family:Georgia, Times, serif; 
+     font-size:24px; 
+     color: slateblue ;
+     padding-right: 8px;  }
+
+#list ul li  {
+     padding:8px;
+     font-style:normal; 
+     font-family:Arial; 
+     font-size:23px;
+     color:slateblue; 
+     }
+#list ul li  em {
+      display:block;
+      }
+#list p {
+     color: seagreen
+     }
+
+h1 {
+     margin: 0 0 30px 0;
+     text-align: center;
+   }
+
